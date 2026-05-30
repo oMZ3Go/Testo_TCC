@@ -1,0 +1,459 @@
+:root {
+    --bg-base: #060814;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #0f162e 0%, #060814 100%);
+    --surface-color: #0d1226;
+    --text-main: #f1f5f9;
+    --text-muted: #64748b;
+    --border-color: rgba(99, 102, 241, 0.1);
+
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --accent-glow: rgba(99, 102, 241, 0.12);
+
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+/* --- Atmospheric Full Screen Background Themes --- */
+body.theme-default {
+    background-image: var(--bg-gradient);
+}
+
+body.theme-html {
+    --accent-color: #ff6b2b;
+    --accent-hover: #e04f10;
+    --accent-glow: rgba(255, 107, 43, 0.1);
+    background-image: radial-gradient(circle at 50% 30%, #2a1208 0%, #060402 100%);
+}
+
+body.theme-css {
+    --accent-color: #0099ff;
+    --accent-hover: #0077cc;
+    --accent-glow: rgba(0, 153, 255, 0.1);
+    background-image: radial-gradient(circle at 50% 30%, #051c33 0%, #02060c 100%);
+}
+
+body.theme-js {
+    --accent-color: #ffd214;
+    --accent-hover: #e0b400;
+    --accent-glow: rgba(255, 210, 20, 0.08);
+    background-image: radial-gradient(circle at 50% 30%, #241e04 0%, #070601 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    /* Changed to allow header/footer layout */
+    min-height: 100vh;
+    transition: background-image 0.6s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.6s ease;
+}
+
+.quiz-container {
+    background-color: var(--surface-color);
+    width: 100%;
+    max-width: 640px;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.screen {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Advanced Typography & Startup Config --- */
+.brand-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent-color), #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-icon {
+    -webkit-text-fill-color: initial;
+    color: var(--accent-color);
+    font-size: 2.8rem;
+}
+
+.brand-subtitle {
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    margin-bottom: 2.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.text-accent {
+    color: var(--accent-color);
+    margin-right: 6px;
+}
+
+/* --- Interactive Checkboxes --- */
+.checkbox-group {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.checkbox-label {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.checkbox-label i {
+    color: var(--text-muted);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Specific Focus Colors for Choice Elements */
+.checkbox-label.html-label:has(input:checked) {
+    border-color: #ff6b2b;
+    background: rgba(255, 107, 43, 0.05);
+    color: #ff6b2b;
+}
+
+.checkbox-label.html-label:has(input:checked) i {
+    color: #ff6b2b;
+    transform: scale(1.1);
+}
+
+.checkbox-label.css-label:has(input:checked) {
+    border-color: #0099ff;
+    background: rgba(0, 153, 255, 0.05);
+    color: #0099ff;
+}
+
+.checkbox-label.css-label:has(input:checked) i {
+    color: #0099ff;
+    transform: scale(1.1);
+}
+
+.checkbox-label.js-label:has(input:checked) {
+    border-color: #ffd214;
+    background: rgba(255, 210, 20, 0.04);
+    color: #ffd214;
+}
+
+.checkbox-label.js-label:has(input:checked) i {
+    color: #ffd214;
+    transform: scale(1.1);
+}
+
+/* --- Input Group Fields --- */
+.input-with-icon {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 1.1rem 1.1rem 1.1rem 3rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* --- Core Control Actions --- */
+.action-btn {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+#next-btn {
+    width: auto;
+    padding: 0.85rem 2rem;
+}
+
+/* --- Functional Layout Grid --- */
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.lang-badge {
+    background-color: var(--accent-glow);
+    color: var(--accent-color);
+    padding: 0.35rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent-color);
+}
+
+#question-counter {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.quiz-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-color);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1.05rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: var(--accent-color);
+    transform: translateX(6px);
+}
+
+.btn.correct {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.btn.wrong {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#score-tracker {
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Site Header Layout --- */
+.site-header {
+    background: rgba(13, 18, 38, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--accent-color), #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-brand .brand-icon {
+    -webkit-text-fill-color: initial;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.nav-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.text-success {
+    color: var(--success);
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+    flex: 1;
+    /* This pushes the footer to the bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+/* Updated Welcome Title since main title moved to header */
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+/* --- Site Footer Layout --- */
+.site-footer {
+    background: rgba(6, 8, 20, 0.8);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.site-footer p {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-subtext {
+    font-weight: 400 !important;
+    font-size: 0.85rem !important;
+    opacity: 0.7;
+}

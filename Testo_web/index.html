@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testo - Frontend Quiz Platform</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="theme-default">
+
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="nav-brand"><i class="fa-solid fa-code-branch brand-icon"></i>TESTO</h1>
+            <nav class="nav-links">
+                <span class="nav-status"><i class="fa-solid fa-circle-check text-success"></i> System Online</span>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="quiz-container">
+            <div id="welcome-screen" class="screen">
+                <h2 class="section-title">Matrix Initialization</h2>
+                <p class="brand-subtitle">Configure your frontend examination parameters</p>
+
+                <form id="quiz-setup-form">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-layer-group text-accent"></i> 1. Choose Domains</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label html-label">
+                                <input type="checkbox" name="language" value="HTML" checked>
+                                <i class="fa-brands fa-html5 fa-2x"></i>
+                                <span>HTML</span>
+                            </label>
+                            <label class="checkbox-label css-label">
+                                <input type="checkbox" name="language" value="CSS" checked>
+                                <i class="fa-brands fa-css3-alt fa-2x"></i>
+                                <span>CSS</span>
+                            </label>
+                            <label class="checkbox-label js-label">
+                                <input type="checkbox" name="language" value="JS" checked>
+                                <i class="fa-brands fa-square-js fa-2x"></i>
+                                <span>JavaScript</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question-count"><i class="fa-solid fa-sliders text-accent"></i> 2. Question Quantity
+                            (5 - 20)</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-list-ol input-icon"></i>
+                            <input type="number" id="question-count" min="5" max="20" value="10">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="start-btn" class="action-btn">
+                        <span>Initialize Interface</span> <i class="fa-solid fa-terminal"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div id="quiz-screen" class="screen hidden">
+                <div class="quiz-header">
+                    <div class="meta-row">
+                        <span id="badge" class="lang-badge">HTML</span>
+                        <span id="question-counter"><i class="fa-regular fa-compass"></i> Question 1 of 10</span>
+                    </div>
+                    <h2 id="question">Loading system parameters...</h2>
+                    <div class="progress-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div id="options" class="options-grid">
+                </div>
+
+                <div class="quiz-footer">
+                    <span id="score-tracker"><i class="fa-solid fa-star text-accent"></i> Score: 0</span>
+                    <button id="next-btn" class="action-btn hidden">
+                        <span>Next Segment</span> <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Testo Examination Matrix. All rights reserved.</p>
+            <p class="footer-subtext">Built for frontend developers to test and refine their structural, stylistic, and
+                logical skills.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
